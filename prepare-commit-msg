@@ -1,0 +1,7 @@
+#!/bin/sh
+COMMIT_EDITMSG=$1
+MERGE_MSG="MERGE-000 "
+MERGE=$(cat $COMMIT_EDITMSG|grep -i 'merge'|wc -l)
+if [ $MERGE -ne 0 ] ; then
+        sed -i.bak -e "1s/^/$MERGE_MSG /" $1        
+fi
